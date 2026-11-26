@@ -35,6 +35,7 @@ export function StudentDashboardScreen({ navigation }) {
     latestMood,
     isCollectionPaused,
     lastSyncedAt,
+    pendingSyncCount,
     isSyncing,
     triggerSync,
   } = useWellness();
@@ -82,6 +83,7 @@ export function StudentDashboardScreen({ navigation }) {
               </Text>
               <Text style={[styles.syncTime, { color: colors.textMuted }]}>
                 Last synced: {lastSyncedAt}
+                {pendingSyncCount > 0 ? ` • ${pendingSyncCount} queued` : ''}
               </Text>
             </View>
           </View>

@@ -32,6 +32,7 @@ export function ProfileScreen({ navigation }) {
     permissions,
     isCollectionPaused,
     lastSyncedAt,
+    pendingSyncCount,
     isSyncing,
     triggerSync,
   } = useWellness();
@@ -232,6 +233,7 @@ export function ProfileScreen({ navigation }) {
               </Text>
               <Text style={[typography.caption, { color: colors.textMuted, marginTop: 2 }]}>
                 Last successful sync: {lastSyncedAt}
+                {pendingSyncCount > 0 ? ` (${pendingSyncCount} pending offline)` : ''}
               </Text>
             </View>
           </View>
