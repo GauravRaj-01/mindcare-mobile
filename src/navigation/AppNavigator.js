@@ -2,14 +2,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useAuth } from '../context/AuthContext';
 import { AuthScreen } from '../screens/AuthScreen';
-import { StudentDashboardScreen } from '../screens/StudentDashboardScreen';
 import { WelcomeScreen } from '../screens/WelcomeScreen';
+import { MainTabs } from './MainTabs';
 
 const Stack = createNativeStackNavigator();
 
 /**
  * Root MindCare Navigator.
- * Automatically switches between the onboarding/auth flow and the signed-in student screens.
+ * Automatically switches between the onboarding/auth flow and the signed-in student tabs.
  */
 export function AppNavigator() {
   const { isAuthenticated } = useAuth();
@@ -23,10 +23,7 @@ export function AppNavigator() {
         }}
       >
         {isAuthenticated ? (
-          <Stack.Screen
-            name="StudentDashboard"
-            component={StudentDashboardScreen}
-          />
+          <Stack.Screen name="MainTabs" component={MainTabs} />
         ) : (
           <>
             <Stack.Screen name="Welcome" component={WelcomeScreen} />
