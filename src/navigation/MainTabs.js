@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { MoodCheckinScreen } from '../screens/MoodCheckinScreen';
 import { PhysicalActivityScreen } from '../screens/PhysicalActivityScreen';
+import { ProfileScreen } from '../screens/ProfileScreen';
 import { ScreenTimeScreen } from '../screens/ScreenTimeScreen';
 import { StudentDashboardScreen } from '../screens/StudentDashboardScreen';
 import { useTheme } from '../theme';
@@ -13,11 +14,11 @@ const TAB_ICONS = {
   ScreenTime: { active: 'phone-portrait', inactive: 'phone-portrait-outline' },
   Activity: { active: 'footsteps', inactive: 'footsteps-outline' },
   Mood: { active: 'heart', inactive: 'heart-outline' },
+  Profile: { active: 'person', inactive: 'person-outline' },
 };
 
 /**
- * Signed-in Student Bottom Tab Navigation.
- * Next step will add the Consent & Profile tab to complete all 8 Phase 2 screens.
+ * Complete Student Bottom Tab Navigation (Home, Screen, Activity, Mood, Profile).
  */
 export function MainTabs() {
   const { colors, shadows } = useTheme();
@@ -75,6 +76,11 @@ export function MainTabs() {
         name="Mood"
         component={MoodCheckinScreen}
         options={{ title: 'Mood' }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{ title: 'Profile' }}
       />
     </Tab.Navigator>
   );
